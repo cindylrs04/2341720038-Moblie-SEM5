@@ -12,19 +12,32 @@
 
 <p>Langkah 2:</p>
 <img src = "img/P1_L1.png">
-<img src = "img/O1.png">
-
 <p>jawab:</p>
 <p>Ketika saya menjalankan kode tersebut, program langsung error karena ada kesalahan penulisan sintaks. Kata kunci else If dan Else ditulis dengan huruf besar, padahal Dart bersifat case-sensitive, sehingga harus ditulis else if dan else. Akibatnya, program tidak bisa dikompilasi dan tidak menampilkan output apapun.</p>
+
+<p>setelah diperbaiki:</p>
+<img src = "img/P7.png">
+
+<p>kerika dijalankan:</p>
+<img src = "img/P8.png">
 
 <hr>
 
 <p>Langkah 3:</p>
-<img src = "img/P1_L3.png">
+
+```
+String test = "true";
+if (test) {
+   print("Kebenaran");
+}
+```
+<p>terjadi error karena if seharusnya menerima nilai bertipe boolean, sedangkan yang ditulis masih berupa string "true".</p>
+
+<p>setelah diperbaiki:</p>
 <img src = "img/O2.png">
 
-<p>jawab:</p>
-<p>Yang terjadi adalah error karena menuliskan if (test) padahal variabel test bertipe String. Di Dart, kondisi if hanya boleh berupa nilai boolean (true atau false), jadi tidak bisa langsung memakai string.</p>
+<p>ketika di jalankan:</p>
+<img src = "img/P1.png">
 
 <hr>
 
@@ -32,20 +45,29 @@
 <p><b>Menerapkan Perulangan "while" dan "do-while"</b></p>
 
 <p>Langkah 2:</p>
-<img src = "img/P2_L1.png">
-<img src = "img/O3.png">
 
-<p>jawab:</p>
-<p>Ketika saya menjalankan kode tersebut, terjadi error karena variabel counter belum saya deklarasikan ataupun diberi nilai terlebih dahulu. Akibatnya program tidak mengenali counter saat digunakan di dalam perulangan while.</p>
+```
+while (counter < 33) {
+    print(counter);
+    counter++;
+  }
+```
+
+<p>ketika dijalankan akan muncul angka 0 sampai 32</p>
+<img src = "img/P4.png">
 
 <hr>
 
 <p>Langkah 3:</p>
 <img src = "img/P2_L3.png">
-<img src = "img/O4.png">
-
 <p>jawab:</p>
 <p>Ketika saya menjalankan kode tersebut, terjadi error karena variabel counter belum saya deklarasikan ataupun diberi nilai terlebih dahulu. Akibatnya program tidak mengenali counter saat digunakan di dalam perulangan do-while.</p>
+
+<p>setelah diperbaiki:</p>
+<img src = "img/O4.png">
+
+<p>ketika dijalankan akan muncul angka 0 sampai 76</p>
+<img src = "img/P5.png">
 
 <hr>
 
@@ -54,20 +76,25 @@
 
 <p>Langkah 2:</p>
 <img src = "img/P3_L1.png">
+<p>Kode tersebut akan menghasilkan error karena penulisan variabel Index dan index berbeda (Dart membedakan huruf besar dan kecil). Selain itu, pada bagian perulangan tidak ada proses penambahan nilai sehingga tidak dapat berjalan sebagaimana mestinya.</p>
+
+<p>setelah diperbaiki:</p>
 <img src = "img/O5.png">
 
-
-<p>jawab:</p>
-<p>Ketika saya menjalankan kode tersebut, terjadi error karena ada beberapa masalah. Pertama, variabel Index dan index ditulis dengan huruf besar dan kecil yang berbeda sehingga dianggap dua variabel berbeda, padahal belum ada satupun yang dideklarasikan. Kedua, di dalam perulangan for tidak menuliskan index++ pada bagian increment, sehingga sintaks tidak lengkap.</p>
+<p>ketika dijalankan:</p>
+<img src = "img/P6.png">
 
 <hr>
 
 <p>Langkah 3:</p>
 <img src = "img/P3_L3.png">
+<p>Kode tersebut akan error karena penulisan If dan Else If seharusnya menggunakan huruf kecil. selain itu, variabel Index ditulis berbeda dengan index, sehingga dianggap sebagai dua variabel yang berbeda padahal seharusnya sama.</p>
+
+<p>setelah diperbaiki:</p>
 <img src = "img/O6.png">
 
-<p>jawab:</p>
-<p>Ketika saya menjalankan kode tersebut, terjadi error karena ada beberapa hal yang salah. Pertama, penulisan kata kunci If dan Else If menggunakan huruf besar, padahal di Dart harus ditulis dengan huruf kecil (if dan else if). Kedua, variabel Index ditulis berbeda dengan index, sehingga dianggap sebagai dua variabel yang berbeda padahal seharusnya sama.</p>
+<p>ketika di jalankan:</p>
+<img src = "img/P3.png">
 
 <br><b>Tugas Praktikum</b><br>
 <p>Buatlah sebuah program yang dapat menampilkan bilangan prima dari angka 0 sampai 201 menggunakan Dart. Ketika bilangan prima ditemukan, maka tampilkan nama lengkap dan NIM Anda.</p>

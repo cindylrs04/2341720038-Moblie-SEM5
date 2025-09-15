@@ -43,13 +43,5 @@
 <p>Null Safety memastikan variabel tidak bernilai null kecuali diizinkan secara eksplisit.</p>
 <p>Late variabel digunakan untuk mendeklarasikan variabel yang akan diinisialisasi nanti, tetapi pasti sebelum digunakan.</p>
 
-<p>Contoh Null Safety:</p>
-<p>String name = 'Cindy'; // Tidak bisa null</p>
-<p>String? nickname; // Bisa null</p>
-<p>print(name); // Output: Cindy</p>
-<p>print(nickname); // Output: null</p>
-
-<p>Contoh Late variabel:</p>
-<p>late String greeting;</p>
-<p>reeting = 'Hello, Dart!';</p>
-<p>print(greeting); // Output: Hello, Dart!</p>
+<img src = "img/T1.png">
+<img src = "img/T2.png">

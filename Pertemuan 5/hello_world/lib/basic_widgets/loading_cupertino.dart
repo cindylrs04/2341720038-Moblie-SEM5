@@ -1,18 +1,23 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FabWidget extends StatelessWidget {
-  const FabWidget({super.key});
+class LoadingCupertino extends StatelessWidget {
+  const LoadingCupertino({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          child: const Icon(Icons.thumb_up),
-          backgroundColor: Colors.pink,
+      home: Container(
+        margin: const EdgeInsets.only(top: 30),
+        color: Colors.white,
+        child: Column(
+          children: <Widget>[
+            CupertinoButton(
+              child: const Text("Contoh button"),
+              onPressed: () {},
+            ),
+            const CupertinoActivityIndicator(),
+          ],
         ),
       ),
     );

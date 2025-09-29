@@ -26,6 +26,8 @@
 
 <br><b>Praktikum 2</b><br>
 <p><b>Menghubungkan Perangkat Android atau Emulator</b></p>
+<p>Langkah 4:</p>
+<img src = "img/P2.jpeg">
 
 <hr>
 
@@ -73,19 +75,19 @@ flutter:
 <p><b>Menerapkan Widget Material Design dan iOS Cupertino</b></p>
 
 <p>Langkah 1: Cupertino Button dan Loading Bar</p>
-<img src = "img/L.png">
+<img src = "img/L9.png">
 
 <p>Langkah 2: Floating Action Button (FAB)</p>
-<img src = "img/L.png">
+<img src = "img/L10.jpeg">
 
-<p>Langkah 3: Floating Action Button (FAB)</p>
-<img src = "img/L.png">
+<p>Langkah 3: Scaffold Widget</p>
+<img src = "img/L13.jpeg">
 
 <p>Langkah 4: Dialog Widget</p>
-<img src = "img/L.png">
+<img src = "img/L14.jpeg">
 
 <p>Langkah 5: Input dan Selection Widget</p>
-<img src = "img/L.png">
+<img src = "img/L15.png">
 
 <p>Langkah 6: Date and Time Pickers</p>
 <img src = "img/L8.png">

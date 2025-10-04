@@ -46,7 +46,7 @@
 <p>Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics</p>
 
 <p>Hasil Akhir:</p>
-<img src = "img/P.png">
+<img src = "img/P8.png">
 
 <hr>
 
@@ -54,7 +54,7 @@
 <p><b>Membangun Navigasi di Flutter</b></p>
 
 <p>Hasil Akhir:</p>
-<img src = "img/P6.png">
+<img src = "img/P.png">
 
 <hr>
 
@@ -62,6 +62,7 @@
 <p>Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics</p>
 
 <p>Hasil Akhir:</p>
-<img src = "img/P.png">
+<img src = "img/P6.png">
+<img src = "img/P7.png">
 
 <hr>

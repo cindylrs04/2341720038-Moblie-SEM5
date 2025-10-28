@@ -48,7 +48,7 @@ class _PhotoFilterCarouselState extends State<PhotoFilterCarousel> {
       builder: (context, color, child) {
         return Center(
           child: Image.network(
-            'https://png.pngtree.com/png-clipart/20231005/original/pngtree-d-illustration-diligent-office-worker-3d-cartoon-character-office-worker-holding-png-image_13126382.png',
+            'https://i.pinimg.com/736x/66/23/70/662370fdaf8842874a28251e15a4995b.jpg',
             color: color.withOpacity(0.5),
             colorBlendMode: BlendMode.color,
             fit: BoxFit.contain, // menyesuaikan ukuran tanpa memotong gambar

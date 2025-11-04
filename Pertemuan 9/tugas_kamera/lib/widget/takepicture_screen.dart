@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'dart:io';
 import 'displaypicture_screen.dart';
 
 class TakePictureScreen extends StatefulWidget {
@@ -36,7 +35,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a Picture - 2241720000')),
+      appBar: AppBar(title: const Text('Take a Picture - 2241720038')),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {

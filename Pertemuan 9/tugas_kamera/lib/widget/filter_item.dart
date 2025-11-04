@@ -17,7 +17,7 @@ class FilterItem extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ClipOval(
             child: Image.asset(
-              'wonogiri.png',
+              'matahari.png',
               color: color.withOpacity(0.5),
               colorBlendMode: BlendMode.hardLight,
               fit: BoxFit.cover,

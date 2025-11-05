@@ -1,4 +1,4 @@
-import './task.dart';
+import 'task.dart';
 
 class Plan {
   final String name;

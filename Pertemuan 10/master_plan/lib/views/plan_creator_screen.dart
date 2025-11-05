@@ -14,16 +14,22 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
   final textController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Master Plans Cindy')),
-      body: Column(
-        children: [
-          _buildListCreator(),
-          Expanded(child: _buildMasterPlans()),
-        ],
-      ),
-    );
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  void addPlan() {
+    final text = textController.text.trim();
+    if (text.isEmpty) return;
+
+    final newPlan = Plan(name: text, tasks: []);
+    ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
+    planNotifier.value = List<Plan>.from(planNotifier.value)..add(newPlan);
+
+    textController.clear();
+    FocusScope.of(context).requestFocus(FocusNode());
+    setState(() {});
   }
 
   Widget _buildListCreator() {
@@ -44,18 +50,6 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
     );
   }
 
-  void addPlan() {
-    final text = textController.text;
-    if (text.isEmpty) return;
-
-    final plan = Plan(name: text, tasks: []);
-    ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
-    planNotifier.value = List<Plan>.from(planNotifier.value)..add(plan);
-    textController.clear();
-    FocusScope.of(context).requestFocus(FocusNode());
-    setState(() {});
-  }
-
   Widget _buildMasterPlans() {
     ValueNotifier<List<Plan>> planNotifier = PlanProvider.of(context);
     List<Plan> plans = planNotifier.value;
@@ -63,9 +57,12 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
     if (plans.isEmpty) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.note, size: 100, color: Colors.grey),
-          Text('Anda belum memiliki rencana apapun.'),
+        children: <Widget>[
+          const Icon(Icons.note, size: 100, color: Colors.grey),
+          Text(
+            'Anda belum memiliki rencana apapun.',
+            style: Theme.of(context).textTheme.headlineSmall,
+          )
         ],
       );
     }
@@ -79,7 +76,9 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
           subtitle: Text(plan.completenessMessage),
           onTap: () {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (_) => PlanScreen(plan: plan)),
+              MaterialPageRoute(
+                builder: (_) => PlanScreen(plan: plan),
+              ),
             );
           },
         );
@@ -88,8 +87,15 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
   }
 
   @override
-  void dispose() {
-    textController.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Master Plans Cindy')),
+      body: Column(
+        children: [
+          _buildListCreator(),
+          Expanded(child: _buildMasterPlans()),
+        ],
+      ),
+    );
   }
 }

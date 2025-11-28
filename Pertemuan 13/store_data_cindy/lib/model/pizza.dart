@@ -1,4 +1,3 @@
-// Konstanta untuk kunci JSON
 const keyId = 'id';
 const keyPizzaName = 'pizzaName';
 const keyDescription = 'description';
@@ -12,7 +11,6 @@ class Pizza {
   final double price;
   final String imageUrl;
 
-  // Constructor utama
   Pizza({
     required this.id,
     required this.pizzaName,
@@ -21,10 +19,7 @@ class Pizza {
     required this.imageUrl,
   });
 
-  // Langkah 2: Perbarui fromJson() menggunakan Konstanta
-  // Konstruktor pabrik (factory constructor) untuk membuat instance dari Map (JSON)
   factory Pizza.fromJson(Map<String, dynamic> json) {
-    // Menggunakan konstanta (keyId, keyPizzaName, dll.)
     final id = int.tryParse(json[keyId].toString()) ?? 0;
     final pizzaName = json[keyPizzaName] != null
         ? json[keyPizzaName].toString()
@@ -46,11 +41,8 @@ class Pizza {
     );
   }
 
-  // Langkah 3: Perbarui toJson() menggunakan Konstanta
-  // Metode untuk mengkonversi instance ke Map (JSON)
   Map<String, dynamic> toJson() {
     return {
-      // Menggunakan konstanta (keyId, keyPizzaName, dll.)
       keyId: id,
       keyPizzaName: pizzaName,
       keyDescription: description,

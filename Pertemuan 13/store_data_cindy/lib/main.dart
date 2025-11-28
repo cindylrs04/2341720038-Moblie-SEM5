@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show DefaultAssetBundle;
-import 'dart:convert';
-import './model/pizza.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart'; 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -13,79 +12,100 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter JSON Demo Cindy',
+      title: 'Secure Storage Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const MyHomePage(title: 'Super Secret String!'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
-  List<Pizza> myPizzas = [];
+  final pwdController = TextEditingController();
+  String myPass = '';
 
-  // Langkah 24: Buat Fungsi Konversi JSON String
-  String convertToJson(List<Pizza> pizzas) {
-    return jsonEncode(pizzas.map((pizza) => pizza.toJson()).toList());
-  }
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass'; 
 
-  Future<List<Pizza>> readJsonFile() async {
-    String myString = await DefaultAssetBundle.of(context)
-        .loadString('test/assets/pizzalist.json');
-        
-    List<dynamic> pizzaMapList = jsonDecode(myString);
-
-    List<Pizza> pizzas = [];
-    for (var pizza in pizzaMapList) {
-      Pizza pizzaPizza = Pizza.fromJson(pizza);
-      pizzas.add(pizzaPizza);
-    }
-    
-    // Langkah 25: Tampilkan Output JSON di Konsol (Serialization)
-    String jsonOutput = convertToJson(pizzas);
-    print(jsonOutput);
-
-    // Langkah 25: return myPizzas
-    return pizzas;
-  }
-  
-  @override
-  void initState() {
-    super.initState();
-    readJsonFile().then((value) {
-      setState(() {
-        myPizzas = value;
-      });
+  Future<void> writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+    pwdController.clear(); 
+    setState(() {
+      myPass = 'Value saved securely.';
     });
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
+  }
+
+  @override
+  void dispose() {
+    pwdController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('JSON'),
-      ),
-      body: ListView.builder(
-        itemCount: myPizzas.length,
-        itemBuilder: (context, index) {
-          if (myPizzas.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          
-          return ListTile(
-            title: Text(myPizzas[index].pizzaName),
-            subtitle: Text('${myPizzas[index].description} - € ${myPizzas[index].price}'), 
-          );
-        },
+      appBar: AppBar(title: Text(widget.title)),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextField(
+              controller: pwdController,
+              decoration: const InputDecoration(
+                labelText: 'Enter Secret String',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true, 
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              child: const Text('Save Value'),
+              onPressed: () {
+                writeToSecureStorage(); 
+              },
+            ),
+            const SizedBox(height: 10),
+
+            ElevatedButton(
+              child: const Text('Read Value'),
+              onPressed: () {
+                readFromSecureStorage().then((value) {
+                  setState(() {
+                    myPass = 'Retrieved: $value';
+                  });
+                });
+              },
+            ),
+            const SizedBox(height: 40),
+
+            Text(
+              myPass,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red),
+            ),
+          ],
+        ),
       ),
     );
   }

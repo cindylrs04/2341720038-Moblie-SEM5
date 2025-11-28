@@ -17,7 +17,7 @@
 <p>Soal 3</p>
 
 <img src = "img/Prak1pt2.png">
-<img src = "img/Prak1pt3.png">
+<img src = "img/prak1pt3.png">
 
 <hr>
 
